@@ -20,24 +20,20 @@ React Hooks 🔥😃
     useEffect(() => {
         document.title = 'new title'
     }, [])
+    
     ```
     Eg:2
 
-    ```JavaScript
+  ```JavaScript
     const [text , setText] = useState('')
 
     useEffect(() => {
         fetchData()
     }, [text])
 
-
-    const fetchData = async () => {
+  const fetchData = async () => {
         const response = await fetch('https://api.github.com/users/facebook')
         const data = await response.json()
         setText(data.name)
-
 }
-
-```
-
 ```
