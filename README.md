@@ -17,6 +17,8 @@ The repository goal was to explore React as much as possible 🔥😃
 
 [/react-hooks-fetch-data](https://www.robinwieruch.de/react-hooks-fetch-data/)
 
+[/usereducer-hook-examples](https://daveceddia.com/usereducer-hook-examples/)
+
 
 
 
