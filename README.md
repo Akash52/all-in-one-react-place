@@ -19,6 +19,8 @@ The repository goal was to explore React as much as possible 🔥😃
 
 [/usereducer-hook-examples](https://daveceddia.com/usereducer-hook-examples/)
 
+[React Redux](https://css-tricks.com/learning-react-redux/)
+
 
 
 
