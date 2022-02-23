@@ -23,6 +23,8 @@ The repository goal was to explore React as much as possible 🔥😃
 
 [Redux YT](https://www.youtube.com/watch?v=jZTxPlUpe3o&ab_channel=SanjeevThiyagarajan)
 
+[Chrome Debugger](https://www.youtube.com/watch?v=-q1z8BPFItw&ab_channel=youwebdev)
+
 
 
 
