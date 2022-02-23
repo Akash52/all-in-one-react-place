@@ -21,6 +21,8 @@ The repository goal was to explore React as much as possible 🔥😃
 
 [React Redux](https://css-tricks.com/learning-react-redux/)
 
+[Redux YT](https://www.youtube.com/watch?v=jZTxPlUpe3o&ab_channel=SanjeevThiyagarajan)
+
 
 
 
