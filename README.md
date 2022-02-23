@@ -25,6 +25,8 @@ The repository goal was to explore React as much as possible 🔥😃
 
 [Chrome Debugger](https://www.youtube.com/watch?v=-q1z8BPFItw&ab_channel=youwebdev)
 
+[Chrome Dev ](https://www.youtube.com/watch?v=oYvtsHu6GmY&ab_channel=ThatJSDude)
+
 
 
 
