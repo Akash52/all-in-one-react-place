@@ -1,6 +1,12 @@
 import React from "react";
-import Birthday from "./01_Birthday_Remainder/Birthday";
+import TourApp from "./02_Tours/TourApp";
+// import Birthday from "./01_Birthday_Remainder/Birthday";
 
 export default function App() {
-  return <Birthday />;
+  return (
+    <div>
+      {/* <Birthday />; */}
+      <TourApp />
+    </div>
+  );
 }
