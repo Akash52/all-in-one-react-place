@@ -1,0 +1,124 @@
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.box {
+  position: relative;
+  min-height: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #203239;
+  border-radius: 10px;
+  padding: 20px;
+}
+.box h1 {
+  font-size: 30px;
+  color: white;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+}
+
+.formInput {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  font-size: 20px;
+  color: black;
+}
+.formInput:focus {
+  outline: none;
+}
+
+.box button {
+  width: 30%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  font-size: 20px;
+  color: black;
+  cursor: pointer;
+}
+.box button:focus {
+  outline: none;
+}
+.box button:hover {
+  background-color: #f5f5f5;
+}
+.box ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+.box ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  padding: 5px;
+  margin-top: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  font-size: 20px;
+  color: black;
+}
+.box ul li:hover {
+  background-color: #f5f5f5;
+}
+.icons {
+  display: flex;
+  justify-content: space-between;
+  width: 15%;
+  padding: 5px;
+}
+.trash {
+  cursor: pointer;
+  color: #ef6d6d;
+}
+.edit {
+  cursor: pointer;
+  color: #019267;
+}
+
+li > input {
+  margin: 5px;
+}
+.clear {
+  position: absolute;
+  bottom: -15px;
+  translate: transform(-50%, -50%);
+  margin: 0 auto;
+  background-color: crimson;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.clear:hover {
+  background-color: #f5f5f5;
+}
+.show {
+  text-decoration: line-through;
+}
+.hide {
+  text-decoration: none;
+}

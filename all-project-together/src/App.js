@@ -1,5 +1,6 @@
-import React from "react";
-import MenuApp from "./05_Menu/MenuApp";
+import React from 'react';
+import TodoList from './06_Todo/TodoList';
+// import MenuApp from "./05_Menu/MenuApp";
 // import TourApp from "./02_Tours/TourApp";
 // import ReviewsApp from "./03_Reviews/ReviewsApp";
 // import AccordionApp from "./04_accordion/AccordionApp";
@@ -12,7 +13,8 @@ export default function App() {
       {/* <TourApp /> */}
       {/* <ReviewsApp /> */}
       {/* <AccordionApp /> */}
-      <MenuApp />
+      {/* <MenuApp /> */}
+      <TodoList />
     </div>
   );
 }
