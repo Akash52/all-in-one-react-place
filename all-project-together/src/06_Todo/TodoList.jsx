@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import Footer from './TodoFooter';
 import Todo from './Todo';
 import TodoForm from './TodoForm';
 import TodoHeader from './TodoHeader';
 import './Todo.css';
+import Footer from './TodoFooter';
 
 const TodoList = () => {
+  const [showForm, setShowForm] = useState(false);
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -24,14 +25,39 @@ const TodoList = () => {
     },
   ]);
 
+  //function for current date
+
+  const getDate = () => {
+    const date = new Date();
+    const options = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    };
+    return date.toLocaleDateString('en-US', options);
+  };
+
   //Local Storage
   React.useEffect(() => {
-    const todoStore = JSON.parse(localStorage.getItem('todoStore'));
-    if (todoStore) setTodos(todoStore);
+    let todoyDate = localStorage.getItem('date');
+    console.log(todoyDate);
+    let todos = localStorage.getItem('todos');
+
+    //check if date is same as today
+    if (JSON.parse(todoyDate) === getDate()) {
+      //if same date, get todos from local storage
+      setTodos(JSON.parse(todos));
+    } else {
+      //if not same date, set date to today and set todos to empty array
+      setTodos([]);
+      localStorage.setItem('todos', JSON.stringify(todos));
+      localStorage.setItem('date', JSON.stringify(getDate()));
+    }
   }, []);
 
   React.useEffect(() => {
-    localStorage.setItem('todoStore', JSON.stringify(todos));
+    localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
   const addTodo = (text) => {
@@ -49,20 +75,39 @@ const TodoList = () => {
     setTodos(newTodos);
   };
 
-  const clearTodos = () => {
-    localStorage.clear();
-    setTodos([]);
-  };
+  // const clearTodos = () => {
+  //   localStorage.clear();
+  //   setTodos([]);
+  // };
 
-  const todoLength = todos.length;
+  //Escape key
+  const handleEscape = (e) => {
+    if (e.keyCode === 27) {
+      setShowForm(false);
+    }
+  };
 
   return (
     <div className='container'>
       <div className='box'>
         <TodoHeader />
-        <TodoForm handleAdd={addTodo} />
-        <Todo todos={todos} handleRemove={handleRemove} setTodos={setTodos} />
-        {todoLength > 0 && <Footer handleClear={clearTodos} todos={todos} />}
+        <Todo todos={todos} handleRemove={handleRemove} />
+        {showForm ? (
+          <TodoForm
+            handleAdd={addTodo}
+            handleKey={handleEscape}
+            setShowForm={setShowForm}
+          />
+        ) : null}
+
+        <div onClick={() => setShowForm(true)}>
+          {!showForm && (
+            <Footer
+              todos={todos}
+              // handleClear={clearTodos}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

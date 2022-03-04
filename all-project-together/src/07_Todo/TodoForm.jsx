@@ -1,40 +1,44 @@
 import React from 'react';
+import Footer from './TodoFooter';
 
-const TodoForm = ({ handleAdd, handleKey }) => {
+const TodoForm = ({ handleAdd, setShowForm }) => {
   const [text, setText] = React.useState('');
-  const inputRef = React.useRef(null);
+
   const handleChange = (e) => {
     setText(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!text) return;
-    handleAdd(text);
-    setText('');
+    if (text.trim().length > 0) {
+      handleAdd(text);
+      setText('');
+    }
   };
 
-  React.useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
+  const keyEvent = (e) => {
+    if (e.key === 'Enter') {
+      setShowForm(false);
     }
-  }, [inputRef]);
+    console.log('keyEvent', e.key);
+  };
 
   return (
     <>
       <form className='form' onSubmit={handleSubmit}>
         <input
-          ref={inputRef}
           className='formInput'
           value={text}
-          onChange={handleChange}
           type='text'
+          onChange={handleChange}
           placeholder='Add Todo'
-          onKeyDown={handleKey}
-          autoFocus
+          onKeyDown={keyEvent}
         />
         <button type='submit'>Add</button>
       </form>
+      <div>
+        <h1>Hello Wolrd!</h1>
+      </div>
     </>
   );
 };
