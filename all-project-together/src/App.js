@@ -1,6 +1,7 @@
 import React from 'react';
-import TodoList from './06_Todo/TodoList';
-import TodoList2 from './07_Todo/TodoList2';
+import TabApp from './08_Tab/TabApp';
+// import TodoList from './06_Todo/TodoList';
+// import TodoList2 from './07_Todo/TodoList2';
 // import MenuApp from "./05_Menu/MenuApp";
 // import TourApp from "./02_Tours/TourApp";
 // import ReviewsApp from "./03_Reviews/ReviewsApp";
@@ -15,8 +16,9 @@ export default function App() {
       {/* <ReviewsApp /> */}
       {/* <AccordionApp /> */}
       {/* <MenuApp /> */}
-      <TodoList />
+      {/* <TodoList /> */}
       {/* <TodoList2 /> */}
+      <TabApp />
     </div>
   );
 }
