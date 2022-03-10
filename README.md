@@ -17,6 +17,8 @@ The repository goal was to explore React as much as possible 🔥😃
 
 [Typescript-React](https://fettblog.eu/typescript-react)
 
+[React Typescript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/)
+
 
 
 ### How do I correctly fetch data inside useEffect? What is []?
