@@ -15,6 +15,8 @@ The repository goal was to explore React as much as possible 🔥😃
 
 ### Blogs
 
+[Typescript-React](https://fettblog.eu/typescript-react)
+
 
 
 ### How do I correctly fetch data inside useEffect? What is []?
