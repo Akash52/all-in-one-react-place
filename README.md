@@ -46,6 +46,14 @@ ReactDOM.render(reactElement,domElement)
 ### React is Just JavaScript! 
 
 ```javaScript
+const text = "as a variable";
+const reactElement= React.createElement(
+ "div",
+ null,
+ (()=>{
+  return text + 42
+ })();
+)
 ```
 
 
