@@ -21,13 +21,13 @@ import React from 'react;
 import ReactDom from 'reactDom'
 ```
  #### import React from 'react;
- - does't know how to render element 😧
+ - does't know how to render an element 😧
  - describe only UI 🙂
 
 #### import ReactDom  from 'reactDom;
 - way to actually render It (element)
  
- ```JavaScript
+ ```Javascript
  <!---  Our React element -->
  const reactElement = <div>Hello World!</div>
 <!--- Our DOM element where we render UI. -->
@@ -42,6 +42,11 @@ ReactDOM.render(reactElement,domElement)
 ### How React Render Element in UI !?
 
 ![img](https://i.ibb.co/Hn5Qv4x/how-React-Render.png)
+
+### React is Just JavaScript! 
+
+```javaScript
+```
 
 
 ### Blogs
