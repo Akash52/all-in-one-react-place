@@ -13,6 +13,37 @@ The repository goal was to explore React as much as possible 🔥😃
 - [Overreacted](https://www.youtube.com/c/OverreactedDev)
 - [Codevolution](https://www.youtube.com/c/Codevolution)
 
+
+### What does meaning of these two import statement !?
+
+```JavaScript
+import React from 'react;
+import ReactDom from 'reactDom'
+```
+ #### import React from 'react;
+ - does't know how to render element 😧
+ - describe only UI 🙂
+
+#### import ReactDom  from 'reactDom;
+- way to actually render It (element)
+ 
+ ```JavaScript
+ <!---  Our React element -->
+ const reactElement = <div>Hello World!</div>
+<!--- Our DOM element where we render UI. -->
+const domElement = document.getElementById("root")
+
+<!--- Now we put together these two element! -->
+ReactDOM.render(reactElement,domElement)
+
+ ```
+
+
+### How React Render Element in UI !?
+
+![img](https://i.ibb.co/Hn5Qv4x/how-React-Render.png)
+
+
 ### Blogs
 
 [Typescript-React](https://fettblog.eu/typescript-react)
