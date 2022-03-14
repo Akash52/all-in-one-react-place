@@ -55,7 +55,12 @@ const reactElement= React.createElement(
  })();
 )
 ```
-
+```
+useMemo does something similar. 
+Let’s say you have computation heavy methods, and only want to run them when their parameters change, 
+not every time the component updates. useMemo returns a memoized result, 
+and executes the callback function only when parameters change.
+```
 
 ### Blogs
 
