@@ -62,6 +62,8 @@ not every time the component updates. useMemo returns a memoized result,
 and executes the callback function only when parameters change.
 ```
 
+- Callbacks are functions that return after an event is executed.
+
 ### Blogs
 
 [Typescript-React](https://fettblog.eu/typescript-react)
