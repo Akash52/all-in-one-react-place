@@ -57,6 +57,12 @@ const reactElement= React.createElement(
 ```
 - Callbacks are functions that return after an event is executed.
 
+## React components
+- A component in React is a single independent unit of a user interface.
+
+[understanding-react-components by @andela-way](https://medium.com/the-andela-way/understanding-react-components-37f841c1f3bb)
+
+
 ## “Kinds” of Components
 
 Architecturally, you can segment components into two kinds: Presentational (a.k.a “Dumb”) and Container (a.k.a. “Smart”).
