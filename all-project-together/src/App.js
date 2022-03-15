@@ -8,6 +8,7 @@ import React from 'react';
 // import AccordionApp from "./04_accordion/AccordionApp";
 // import Birthday from "./01_Birthday_Remainder/Birthday";
 import SliderApp from './09_Slider/SliderApp';
+import ShoppingApp from './Shopping/ShoppingApp';
 
 export default function App() {
   return (
@@ -20,7 +21,8 @@ export default function App() {
       {/* <TodoList /> */}
       {/* <TodoList2 /> */}
       {/* <TabApp /> */}
-      <SliderApp />
+      {/* <SliderApp /> */}
+      <ShoppingApp />
     </div>
   );
 }
