@@ -21,11 +21,11 @@ import React from 'react;
 import ReactDom from 'reactDom'
 ```
  ### import React from 'react;
- - does't know how to render an element 😧
- - describe only UI 🙂
+ - Does't know how to render an element 😧
+ - Describe only UI 🙂
 
 ### import ReactDom  from 'reactDom;
-- way to actually render It (element)
+- Way to actually render It (element)
  
  ```Javascript
  <!---  Our React element -->
