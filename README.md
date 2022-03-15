@@ -188,6 +188,115 @@ function LoginForm() {
 
  ```
  
+ ### useEffect
+ 
+ “If the blogPostId prop changes, then download that blog post and
+ display it”:
+ ```javascript
+ useEffect(() => {
+    fetch(`/posts/${blogPostId}`).then((content) => setContent(content));
+}, [blogPostId]);
+
+ ```
+  This one says, “If the username changes, then save it to localStorage”:
+ ```javascript
+ useEffect(() => {
+    localStorage.setItem('username', username);
+}, [username]);
+
+ ```
+   This one says, “As soon as the user enters the right passcode, then show the secret”:
+ ```javascript
+ useEffect(() => {
+    if (passcode === '1234') {
+        setShowSecret(true);
+    }
+}, [passcode]);
+ ```
+ Focusing an Input Automatically
+ ```javascript
+import React, {useEffect, useState, useRef} from 'react';
+import ReactDOM from 'react-dom';
+function App() {
+    // Store a reference to the input's DOM node
+    const inputRef = useRef();
+    // Store the input's value in state
+    const [value, setValue] = useState('');
+    useEffect(
+        () => {
+            // This runs AFTER the first render,
+            // so the ref is already set.
+            console.log('render');
+            inputRef.current.focus();
+        },
+        // The effect "depends on" inputRef
+        [inputRef],
+    );
+    return (
+        <input
+            ref={inputRef}
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+        />
+    );
+}
+ ```
+ ### Only Run on Mount and Unmount
+ 
+The empty array says “this effect depends on nothing,” and so it will only run once, after the first render.
+  ```javascript
+useEffect(() => {
+    console.log('mounted');
+    return () => console.log('unmounting...');
+}, []); // <-- add this empty array here
+ ```
+ 
+ ### Unmount and Cleanup
+ 
+   ```javascript
+useEffect(() => {
+    // on mount, and every time the blogPostId
+    // changes, set up a subscription
+    subscribeToNewComments(blogPostId);
+    // on unmount, and every time *before*
+    // subscribing anew, unsubscribe from
+    // the last blogPostId
+    return () => unsubscribeFromComments(blogPostId);
+}, [blogPostId]);
+ ```
+This is a nice clean way of keeping subscriptions in sync with a certain piece of data.
+
+### Fetch Data With useEffect
+
+```javascript
+import React, {useEffect, useState} from 'react';
+import ReactDOM from 'react-dom';
+function Reddit() {
+    // Initialize state to hold the posts
+    const [posts, setPosts] = useState([]);
+    useEffect(() => {
+        // Fetch the data when the component mounts
+        fetch('https://www.reddit.com/r/reactjs.json')
+            .then((res) => res.json())
+            .then((json) =>
+                // Save the posts into state
+                setPosts(json.data.children.map((c) => c.data)),
+            );
+    }); // <-- we didn't pass the 2nd arg. what will happen?
+    // Render as usual
+    return (
+        <ul>
+            {posts.map((post) => (
+                <li key={post.id}>{post.title}</li>
+            ))}
+        </ul>
+    );
+}
+ReactDOM.render(<Reddit />, document.querySelector('#root'));
+
+```
+ 
+ 
  ## What to Put in State
  
  ### How do you decide what should go into state?
@@ -198,6 +307,9 @@ function LoginForm() {
 - Open/closed state (modal open/closed, sidebar expanded/hidden)
  
 ## Adavance Hooks
+
+- A “reducer” is a fancy word for a function that takes 2 values and returns 1 value.
+- 
 
 - useMemo is for memoizing variable values.
 - useMemo does something similar. Let’s say you have computation heavy methods, and only want to run them when their parameters change, 
