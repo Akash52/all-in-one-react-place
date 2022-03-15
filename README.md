@@ -67,6 +67,39 @@ Architecturally, you can segment components into two kinds: Presentational (a.k.
 
 Input controls in React come in two flavors: controlled and uncontrolled.
 
+- Controlled components in React are those in which form data is handled by the component’s state.
+
+#### Example 
+```JavaScript
+import React, {useState} from 'react';
+const InputExample = () => {
+    const [text, setText] = useState('');
+    const handleChange = (event) => {
+        setText(event.target.value);
+    };
+    return <input type="text" value={text} onChange={handleChange} />;
+};
+
+```
+- Uncontrolled components are those for which the form data is handled by the DOM itself.
+
+#### Example 
+```JavaScript
+import React, {useRef} from 'react';
+const RefInput = () => {
+    const input = useRef();
+    const showValue = () => {
+        alert(`Input contains: ${input.current.value}`);
+    };
+    return (
+        <div>
+            <input type="text" ref={input} />
+            <button onClick={showValue}>Alert the Value!</button>
+        </div>
+    );
+};
+```
+
 [Read More](https://blog.logrocket.com/controlled-vs-uncontrolled-components-in-react/)
 
 ## Hooks ⚓
