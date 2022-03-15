@@ -86,7 +86,7 @@ and executes the callback function only when parameters change.
 
 [Chrome Dev ](https://www.youtube.com/watch?v=oYvtsHu6GmY&ab_channel=ThatJSDude)+
 
-## Hooks
+## Hooks ⚓
 
 #### useState
  ```javascript
@@ -172,6 +172,15 @@ function LoginForm() {
 
  ```
  
+ ### What to Put in State
+ 
+ #### How do you decide what should go into state?
+ 
+- User-entered input (values of text boxes and other form fields)
+- Current or selected item (the current tab, the selected row)
+- Data from the server (a list of products, the number of “likes” on a page)
+- Open/closed state (modal open/closed, sidebar expanded/hidden)
+ 
 ### Adavance Hooks
 
 - useMemo is for memoizing variable values.
@@ -179,6 +188,13 @@ function LoginForm() {
 - useReducer is for creating and using custom reducers.
 
 - useRef is for defining refs to components in the DOM.
+
+## Rules of Hooks 📝
+- Only call hooks at the top level of your function.
+- Don’t put them in loops, conditionals, or
+nested functions.
+- Only call hooks from React function components.
+- The names of custom hooks must start with “use”.
 
 ## Redux Terms 😃
 
