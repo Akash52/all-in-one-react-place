@@ -162,11 +162,11 @@ function LoginForm() {
     <div className="login-form">
       <form className="form">
         <label>
-          Username:
+          Username: 🙍‍♂️
           <input type="text" />
         </label>
         <label>
-          Password:
+          Password: 🔒
           <input type={showPassword ? "text" : "password"} />
         </label>
         <label>
@@ -178,7 +178,7 @@ function LoginForm() {
             }}
             value="Submit"
           />
-          Show Password
+          Show Password 👁️
         </label>
         <button>Login</button>
       </form>
