@@ -14,17 +14,17 @@ The repository goal was to explore React as much as possible 🔥😃
 - [Codevolution](https://www.youtube.com/c/Codevolution)
 
 
-### What does meaning of these two import statement !?
+## What does meaning of these two import statement !?
 
 ```JavaScript
 import React from 'react;
 import ReactDom from 'reactDom'
 ```
- #### import React from 'react;
+ ### import React from 'react;
  - does't know how to render an element 😧
  - describe only UI 🙂
 
-#### import ReactDom  from 'reactDom;
+### import ReactDom  from 'reactDom;
 - way to actually render It (element)
  
  ```Javascript
@@ -39,11 +39,11 @@ ReactDOM.render(reactElement,domElement)
  ```
 
 
-### How React Render Element in UI !?
+## How React Render Element in UI !?
 
 ![img](https://i.ibb.co/Hn5Qv4x/how-React-Render.png)
 
-### React is Just JavaScript! 
+## React is Just JavaScript! 
 
 ```javaScript
 const text = "as a variable";
@@ -55,13 +55,6 @@ const reactElement= React.createElement(
  })();
 )
 ```
-```
-useMemo does something similar. 
-Let’s say you have computation heavy methods, and only want to run them when their parameters change, 
-not every time the component updates. useMemo returns a memoized result, 
-and executes the callback function only when parameters change.
-```
-
 - Callbacks are functions that return after an event is executed.
 
 ### Blogs
@@ -172,21 +165,22 @@ function LoginForm() {
 
  ```
  
- ### What to Put in State
+ ## What to Put in State
  
- #### How do you decide what should go into state?
+ ### How do you decide what should go into state?
  
 - User-entered input (values of text boxes and other form fields)
 - Current or selected item (the current tab, the selected row)
 - Data from the server (a list of products, the number of “likes” on a page)
 - Open/closed state (modal open/closed, sidebar expanded/hidden)
  
-### Adavance Hooks
+## Adavance Hooks
 
 - useMemo is for memoizing variable values.
-
+- useMemo does something similar. Let’s say you have computation heavy methods, and only want to run them when their parameters change, 
+not every time the component updates. useMemo returns a memoized result, 
+and executes the callback function only when parameters change.
 - useReducer is for creating and using custom reducers.
-
 - useRef is for defining refs to components in the DOM.
 
 ## Rules of Hooks 📝
