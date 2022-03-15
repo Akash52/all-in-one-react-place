@@ -1,4 +1,5 @@
 .box {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,10 +8,9 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 5px #ccc;
-  padding: 10px;
-  margin: 0 auto;
+  padding: 15px;
+  margin: 15px auto;
   max-width: 800px;
-  overflow-x: auto;
   user-select: none;
 }
 
@@ -30,6 +30,8 @@ th {
   width: fit-content;
   display: flex;
   align-items: center;
+  margin-bottom: 5px;
+  line-height: 0.95rem;
 }
 .row img {
   border-radius: 9999px;
@@ -75,4 +77,24 @@ option {
   font-size: 0.75rem;
   outline: none;
   border: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  position: absolute;
+  border-radius: 20%;
+  right: -20px;
+  padding: 20px;
+  transform: translateX(85%);
+  width: 250px;
+  height: 300px;
+  align-items: center;
+  color: #fafafa;
+  background-color: burlywood;
+  z-index: 999;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
