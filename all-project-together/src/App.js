@@ -7,8 +7,9 @@ import React from 'react';
 // import ReviewsApp from "./03_Reviews/ReviewsApp";
 // import AccordionApp from "./04_accordion/AccordionApp";
 // import Birthday from "./01_Birthday_Remainder/Birthday";
-import SliderApp from './09_Slider/SliderApp';
+// import SliderApp from './09_Slider/SliderApp';
 import ShoppingApp from './Shopping/ShoppingApp';
+import UserList from './Table/UserList';
 
 export default function App() {
   return (
@@ -22,7 +23,8 @@ export default function App() {
       {/* <TodoList2 /> */}
       {/* <TabApp /> */}
       {/* <SliderApp /> */}
-      <ShoppingApp />
+      {/* <ShoppingApp /> */}
+      <UserList />
     </div>
   );
 }

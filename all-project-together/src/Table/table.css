@@ -1,0 +1,78 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #ccc;
+  padding: 10px;
+  margin: 0 auto;
+  max-width: 800px;
+  overflow-x: auto;
+  user-select: none;
+}
+
+table {
+  border-collapse: collapse;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+td,
+th {
+  text-align: left;
+  padding: 8px;
+}
+
+.row {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+.row img {
+  border-radius: 9999px;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 5px;
+}
+
+.row p {
+  margin: 0;
+  padding: 0;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+.row p:nth-child(1) {
+  color: rgb(17 24 39);
+  font-weight: 500;
+}
+.row p:nth-child(2) {
+  color: rgb(107 114 128);
+}
+
+.lock-icon {
+  color: rgb(156 163 175);
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.row2 select {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  background-color: #fafafa;
+  border-radius: 0.2rem;
+}
+.row2 select:focus {
+  outline: none;
+}
+option {
+  background-color: white;
+  font-size: 0.75rem;
+  outline: none;
+  border: none;
+}
