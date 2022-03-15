@@ -57,31 +57,9 @@ const reactElement= React.createElement(
 ```
 - Callbacks are functions that return after an event is executed.
 
-### Blogs
-
-[Typescript-React](https://fettblog.eu/typescript-react)
-
-[React Typescript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/)
-
-
-
-### How do I correctly fetch data inside useEffect? What is []?
-
-[/react-hooks-fetch-data](https://www.robinwieruch.de/react-hooks-fetch-data/)
-
-[/usereducer-hook-examples](https://daveceddia.com/usereducer-hook-examples/)
-
-[React Redux](https://css-tricks.com/learning-react-redux/)
-
-[Redux YT](https://www.youtube.com/watch?v=jZTxPlUpe3o&ab_channel=SanjeevThiyagarajan)
-
-[Chrome Debugger](https://www.youtube.com/watch?v=-q1z8BPFItw&ab_channel=youwebdev)
-
-[Chrome Dev ](https://www.youtube.com/watch?v=oYvtsHu6GmY&ab_channel=ThatJSDude)+
-
 ## Hooks ⚓
 
-#### useState
+### useState
  ```javascript
  import React from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
@@ -225,6 +203,28 @@ In Redux, actions can be dispatched from the user interface or from a middleware
 - reducers are pure functions that accept a document action and pass its payload
 to the state.
 ```
+
+### Blogs
+
+[Typescript-React](https://fettblog.eu/typescript-react)
+
+[React Typescript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/)
+
+
+
+### How do I correctly fetch data inside useEffect? What is []?
+
+[/react-hooks-fetch-data](https://www.robinwieruch.de/react-hooks-fetch-data/)
+
+[/usereducer-hook-examples](https://daveceddia.com/usereducer-hook-examples/)
+
+[React Redux](https://css-tricks.com/learning-react-redux/)
+
+[Redux YT](https://www.youtube.com/watch?v=jZTxPlUpe3o&ab_channel=SanjeevThiyagarajan)
+
+[Chrome Debugger](https://www.youtube.com/watch?v=-q1z8BPFItw&ab_channel=youwebdev)
+
+[Chrome Dev ](https://www.youtube.com/watch?v=oYvtsHu6GmY&ab_channel=ThatJSDude)
 
 
 
