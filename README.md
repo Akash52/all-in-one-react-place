@@ -57,6 +57,18 @@ const reactElement= React.createElement(
 ```
 - Callbacks are functions that return after an event is executed.
 
+## “Kinds” of Components
+
+Architecturally, you can segment components into two kinds: Presentational (a.k.a “Dumb”) and Container (a.k.a. “Smart”).
+
+[smart and dumb components by @dan_abramov](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
+
+## Input Controls
+
+Input controls in React come in two flavors: controlled and uncontrolled.
+
+[Read More](https://blog.logrocket.com/controlled-vs-uncontrolled-components-in-react/)
+
 ## Hooks ⚓
 
 ### useState
