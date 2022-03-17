@@ -21,8 +21,8 @@ import React from 'react;
 import ReactDom from 'reactDom'
 ```
  ### import React from 'react;
- - Does't know how to render an element 😧
- - Describe only UI 🙂
+ - React Does't know how to render an element 😧
+ - React Describe only UI 🙂
 
 ### import ReactDom  from 'reactDom;
 - Way to actually render It (element)
@@ -37,7 +37,6 @@ const domElement = document.getElementById("root")
 ReactDOM.render(reactElement,domElement)
 
  ```
-
 
 ## How React Render Element in UI !?
 
@@ -323,6 +322,12 @@ not every time the component updates. useMemo returns a memoized result,
 and executes the callback function only when parameters change.
 - useReducer is for creating and using custom reducers.
 - useRef is for defining refs to components in the DOM.
+
+## Popular Custom Hooks ✳️
+
+### FetchAPI custom hooks
+```
+```
 
 ## Rules of Hooks 📝
 - Only call hooks at the top level of your function.
