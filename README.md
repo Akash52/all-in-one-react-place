@@ -13,6 +13,45 @@ The repository goal was to explore React as much as possible 🔥😃
 - [Overreacted](https://www.youtube.com/c/OverreactedDev)
 - [Codevolution](https://www.youtube.com/c/Codevolution)
 
+Simfrom Mock Interview :
+
+#### Q1 : Way of creating component in React
+- Two way one is class based & Function based
+##### Inner Question
+- How to create class based component
+
+![alt](https://cdn-media-1.freecodecamp.org/images/1*N2KU7pOcwZwKeOi3B-YBLQ.png) </br>
+
+[read more](https://medium.com/swlh/class-based-components-in-react-440eb8ed85a0)
+
+#### Q2 : What are Hooks?
+
+“Hooks are a new addition to React in version 16.8 that allows you use state and other React features, like lifecycle methods, without writing a class.”
+
+[reade more](https://blog.bitsrc.io/why-we-switched-to-react-hooks-48798c42c7f)
+
+
+
+#### Q3 : Why we need hooks in react js
+- Hooks are functions that let you “hook into” React state and lifecycle features from function components. 
+
+[react more](https://blog.bitsrc.io/6-reasons-to-use-react-hooks-instead-of-classes-7e3ee745fe04)
+
+#### Q4 : What are the different lifecycle methods in react
+
+![alt](https://res.cloudinary.com/practicaldev/image/fetch/s--RrkCw0QH--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/di74f0jivvxwhelmqhof.png)
+
+#### Inner Question
+- how these method implement in functional component
+
+##### You can take advantage of the useEffect hook to achieve the same results as with the componentDidMount, componentDidUpdate and componentWillUnmount methods.
+
+[read more class based component](https://dev.to/aditya278/react-components-lifecycle-methods-wth-are-they-2lh5)
+[react more useEffect](https://tsh.io/blog/react-component-lifecycle-methods-vs-hooks/)
+
+
+
+
 
 ## What does meaning of these two import statement !?
 
