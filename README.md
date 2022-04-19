@@ -24,7 +24,7 @@ Simfrom Mock Interview :
 
 [read more](https://medium.com/swlh/class-based-components-in-react-440eb8ed85a0)
 
-#### Q2 : What are Hooks?
+### Q2 : What are Hooks?
 
 “Hooks are a new addition to React in version 16.8 that allows you use state and other React features, like lifecycle methods, without writing a class.”
 
@@ -32,12 +32,12 @@ Simfrom Mock Interview :
 
 
 
-#### Q3 : Why we need hooks in react js 
+### Q3 : Why we need hooks in react js 
 - Hooks are functions that let you “hook into” React state and lifecycle features from function components. 
 
 [react more](https://blog.bitsrc.io/6-reasons-to-use-react-hooks-instead-of-classes-7e3ee745fe04)
 
-#### Q4 : What are the different lifecycle methods in react
+### Q4 : What are the different lifecycle methods in react
 
 ![alt](https://res.cloudinary.com/practicaldev/image/fetch/s--RrkCw0QH--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/di74f0jivvxwhelmqhof.png)
 
@@ -49,43 +49,80 @@ Simfrom Mock Interview :
 [read more class based component](https://dev.to/aditya278/react-components-lifecycle-methods-wth-are-they-2lh5)
 [react more useEffect](https://tsh.io/blog/react-component-lifecycle-methods-vs-hooks/)
 
-#### Q5 : what is the use of useref in react 
+### Q5 : what is the use of useref in react 
 - The useRef Hook allows you to persist values between renders. It can be used to store a mutable value that does not cause a re-render when updated. It can be used to access a DOM element directly
 
 [read more](https://medium.com/trabe/react-useref-hook-b6c9d39e2022)
+[](https://reactjs.org/docs/hooks-reference.html#useref)
 
-#### Q6 : Code splitting react (have you implimented code splitting in your code) 
+### Q6 : Code splitting react (have you implimented code splitting in your code) 
 
 ![alt](https://res.cloudinary.com/practicaldev/image/fetch/s--17hGD7P6--/c_imagga_scale,f_auto,fl_progressive,h_500,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/rk2b95me6wfw9126ccr0.JPG)
 
 [read more](https://blog.logrocket.com/code-splitting-in-react-an-overview/)
 
-#### Q7 : How does browser understand JSX?.
+### Q7 : How does browser understand JSX?.
 
 ![alt](https://miro.medium.com/max/1024/1*cyPNglQ6rgC14YmllTwhDQ.png)
 
 - [read more](https://alligator.io/react/jsx-introduction/#:~:text=JSX%20is%20language%20extension%20for,React%20developers%20really%20enjoy%20it.)
 - [read more](https://www.telerik.com/blogs/how-jsx-react-works-under-hood)
+- [jsx](https://kentcdodds.com/blog/what-is-jsx)
 
-#### Q8 : usereducer hook in react js
+### Q8 : usereducer hook in react js
 
 
 [usereducer hook](https://dmitripavlutin.com/react-usereducer/)
 [read more](https://blog.logrocket.com/react-usereducer-hook-ultimate-guide/)
 
-#### Q9 : If I want pass ref in custom component ?
+### Q9 : If I want pass ref in custom component ?
 
 - React forwardRef is a method that allows parent components pass down (i.e., “forward”) refs to their children. Using forwardRef in React gives the child component a reference to a DOM element created by its parent component. This then allows the child to read and modify that element anywhere it is being used.
 
 [read more](https://blog.logrocket.com/cleaning-up-the-dom-with-forwardref-in-react/)
 
+### Q10: proptypes
 
+[proptypes](https://reactjs.org/docs/typechecking-with-proptypes.html)
 
+### Q11: have you perform data fetching in react ?
 
+[data fetching](https://blog.bitsrc.io/things-you-should-know-when-fetching-data-for-react-components-39d61602feda)
 
+### Q12 : have you encountered infinite render (useEffect)
 
+[infinite-loop-inside-useeffect](https://medium.com/@andrewmyint/infinite-loop-inside-useeffect-react-hooks-6748de62871)
+[useeffect-infinite-loop-patterns](https://javascript.plainenglish.io/5-useeffect-infinite-loop-patterns-2dc9d45a253f)
 
+### Q13 : Array Methods in JavaScript
 
+![alt](https://www.tutsmake.com/wp-content/uploads/2019/03/JavaScript-Array-Methods.jpeg)
+
+-  all methods with examples
+
+### Q14 : HOC (Higher Order Component in React)
+
+[higher-order-components](https://flexiple.com/react/introduction-to-higher-order-components-in-react-by-example/)
+
+### Q15 : React hooks rules
+
+- Only call hooks at the top level of your function.
+- Don’t put them in loops, conditionals, or
+nested functions.
+- Only call hooks from React function components.
+- The names of custom hooks must start with “use”.
+
+### Q16 : difference between controlled and uncontrolled components or inputs
+
+[controlled-vs-uncontrolled](https://blog.logrocket.com/controlled-vs-uncontrolled-components-in-react/)
+
+### Q17 : context API (imp 😄)
+
+[context api](https://dmitripavlutin.com/react-context-and-usecontext/)
+
+### Q18 : Javascript: call(), apply() and bind()
+
+[Javascript: call(), apply() and bind()](https://medium.com/@omergoldberg/javascript-call-apply-and-bind-e5c27301f7bb)
 
 
 ## What does meaning of these two import statement !?
