@@ -18,7 +18,7 @@ Simfrom Mock Interview :
 #### Q1 : Way of creating component in React
 - Two way one is class based & Function based
 ##### Inner Question
-- How to create class based component
+- How to create class based component ?
 
 ![alt](https://cdn-media-1.freecodecamp.org/images/1*N2KU7pOcwZwKeOi3B-YBLQ.png) </br>
 
@@ -32,7 +32,7 @@ Simfrom Mock Interview :
 
 
 
-#### Q3 : Why we need hooks in react js
+#### Q3 : Why we need hooks in react js 
 - Hooks are functions that let you “hook into” React state and lifecycle features from function components. 
 
 [react more](https://blog.bitsrc.io/6-reasons-to-use-react-hooks-instead-of-classes-7e3ee745fe04)
@@ -48,6 +48,41 @@ Simfrom Mock Interview :
 
 [read more class based component](https://dev.to/aditya278/react-components-lifecycle-methods-wth-are-they-2lh5)
 [react more useEffect](https://tsh.io/blog/react-component-lifecycle-methods-vs-hooks/)
+
+#### Q5 : what is the use of useref in react 
+- The useRef Hook allows you to persist values between renders. It can be used to store a mutable value that does not cause a re-render when updated. It can be used to access a DOM element directly
+
+[read more](https://medium.com/trabe/react-useref-hook-b6c9d39e2022)
+
+#### Q6 : Code splitting react (have you implimented code splitting in your code) 
+
+![alt](https://res.cloudinary.com/practicaldev/image/fetch/s--17hGD7P6--/c_imagga_scale,f_auto,fl_progressive,h_500,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/rk2b95me6wfw9126ccr0.JPG)
+
+[read more](https://blog.logrocket.com/code-splitting-in-react-an-overview/)
+
+#### Q7 : How does browser understand JSX?.
+
+![alt](https://miro.medium.com/max/1024/1*cyPNglQ6rgC14YmllTwhDQ.png)
+
+- [read more](https://alligator.io/react/jsx-introduction/#:~:text=JSX%20is%20language%20extension%20for,React%20developers%20really%20enjoy%20it.)
+- [read more](https://www.telerik.com/blogs/how-jsx-react-works-under-hood)
+
+#### Q8 : usereducer hook in react js
+
+
+[usereducer hook](https://dmitripavlutin.com/react-usereducer/)
+[read more](https://blog.logrocket.com/react-usereducer-hook-ultimate-guide/)
+
+#### Q9 : If I want pass ref in custom component ?
+
+- React forwardRef is a method that allows parent components pass down (i.e., “forward”) refs to their children. Using forwardRef in React gives the child component a reference to a DOM element created by its parent component. This then allows the child to read and modify that element anywhere it is being used.
+
+[read more](https://blog.logrocket.com/cleaning-up-the-dom-with-forwardref-in-react/)
+
+
+
+
+
 
 
 
