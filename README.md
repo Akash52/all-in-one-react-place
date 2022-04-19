@@ -439,6 +439,8 @@ and executes the callback function only when parameters change.
 
 ## Popular Custom Hooks ✳️
 
+[writing-your-own-custom-hooks](https://blog.bitsrc.io/writing-your-own-custom-hooks-4fbcf77e112e)
+
 ### FetchAPI custom hooks
 ```
 ```
