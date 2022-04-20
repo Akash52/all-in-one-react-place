@@ -127,6 +127,106 @@ nested functions.
 ### [https://reactjs.org/](https://reactjs.org/)
 ### [https://beta.reactjs.org/](https://beta.reactjs.org/)
 
+## JSX Is Compiled to JavaScript
+
+- The JSX elements you write are actually compiled down to JavaScript by a tool called Babel.
+- Babel is a compiler that transforms code into valid ES5 JavaScript that all browsers can understand, and it’s
+bundled in with projects created by Create React App.
+
+```js
+// This JSX:
+  function HelloWorld() {
+   return (<Hello/> <World/>);
+   }
+```
+```js
+// Becomes this JS:
+   function HelloWorld() {
+    return (
+     React.createElement(Hello, null) React.createElement(World, null)
+     );
+   }
+ ```
+ ### (Note) A component function must return a single element.
+ 
+ ## “If” in JSX
+ 
+ #### “How do I write a conditional if I can’t use ‘if’?” There
+ 
+ ```js
+      function ValidIndicator() {
+        const isValid = true;
+        return <span>{isValid ? 'valid' : 'not valid'}</span>;
+      }
+ ```
+ 
+ ### are a few things you can do inside JSX expressions:
+ 
+• Math, concatenation: {7 + 5} or {'Your' + 'Name'}
+• Function calls: {this.getFullName(person)}
+• Ternary (?) operator: {name === 'Dave' ? 'me' : 'not me'}
+• Boolean expressions: {isEnabled && 'enabled'}
+
+### Here are some things you cannot do:
+
+• Define new variables with let, const, and var
+• Use if, for, while, etc.
+• Define functions with function
+
+## How to Write PropTypes
+
+```js
+import PropTypes from 'prop-types';
+      function Comment({ author, message, likes }) {
+        return (
+          <div>
+            <div className='author'>{author}</div>
+            <div className='message'>{message}</div>
+            <div className='likes'>{likes > 0 ? likes : 'No'} likes</div>
+          </div>
+        );
+      }
+      Comment.propTypes = {
+        message: PropTypes.string.isRequired,
+        author: PropTypes.string.isRequired,
+        likes: PropTypes.number,
+      };
+```
+- notice that PropTypes must be explicitly imported from the ‘prop-types’ package.
+
+### Cleaner Syntax for Class Components
+
+```js
+class CountingParent extends React.Component {
+        // initialize state with a property initializer
+        // you can access this.props if needed
+        state = {
+          actionCount: 0,
+        };
+        // writing the handler as an arrow function
+        // means it will retain the proper value of
+        // `this`, so we can avoid having to bind it
+        handleAction = (action) => {
+          console.log('Child says', action);
+          // Replace actionCount with an incremented value
+          this.setState({
+            actionCount: this.state.actionCount + 1,
+          });
+        };
+        render() {
+          return (
+            <div>
+              <Child onAction={this.handleAction} />
+              <p>Clicked {this.state.actionCount} times</p>
+            </div>
+          );
+        }
+      }
+```
+
+
+
+
 
 ## What does meaning of these two import statement !?
 
