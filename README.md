@@ -610,6 +610,8 @@ to the state.
 
 [Chrome Dev ](https://www.youtube.com/watch?v=oYvtsHu6GmY&ab_channel=ThatJSDude)
 
+#### [the-most-failed-javascript-interview-questions](https://intspirit.medium.com/the-most-failed-javascript-interview-questions-849664e5bee)
+
 
 
 
