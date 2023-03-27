@@ -613,5 +613,234 @@ to the state.
 #### [the-most-failed-javascript-interview-questions](https://intspirit.medium.com/the-most-failed-javascript-interview-questions-849664e5bee)
 
 
+## Snooker table booking Application
+### PINIA STORE
+```js
+import { defineStore } from 'pinia';
+
+export const useStore = defineStore({
+  id: 'snooker-store',
+  state: () => ({
+    tables: [
+      { id: 1, name: 'Table 1', isAvailable: true },
+      { id: 2, name: 'Table 2', isAvailable: true },
+      { id: 3, name: 'Table 3', isAvailable: true },
+      { id: 4, name: 'Table 4', isAvailable: true },
+      { id: 5, name: 'Table 5', isAvailable: true },
+      { id: 6, name: 'Table 6', isAvailable: true },
+    ],
+    bookings: [],
+  }),
+  getters: {
+    availableTables: state => state.tables.filter(table => table.isAvailable),
+    bookedTables: state => state.tables.filter(table => !table.isAvailable),
+    getTableById: state => id => state.tables.find(table => table.id === id),
+  },
+  actions: {
+    bookTable(tableId, name, phone, date, startTime, endTime) {
+      const table = this.getTableById(tableId);
+      if (!table.isAvailable) {
+        throw new Error('Table is already booked');
+      }
+      const booking = { id: Date.now(), tableId, name, phone, date, startTime, endTime };
+      this.tables.splice(this.tables.indexOf(table), 1, { ...table, isAvailable: false });
+      this.bookings.push(booking);
+    },
+    cancelBooking(id) {
+      const booking = this.bookings.find(booking => booking.id === id);
+      const table = this.getTableById(booking.tableId);
+      this.tables.splice(this.tables.indexOf(table), 1, { ...table, isAvailable: true });
+      this.bookings.splice(this.bookings.indexOf(booking), 1);
+    },
+  },
+});
+
+```
+
+#### Table List
+```vue
+<template>
+  <div class="bg-gray-100 p-6">
+    <h2 class="text-2xl font-bold mb-4">Tables</h2>
+    <h3 class="text-lg font-semibold mb-2">Available Tables</h3>
+    <ul class="divide-y divide-gray-300">
+      <li v-for="table in availableTables" :key="table.id" class="flex justify-between py-2">
+        <span class="text-lg">{{ table.name }}</span>
+        <button class="bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded" @click="bookTable(table.id)">Book Table</button>
+      </li>
+    </ul>
+    <h3 class="text-lg font-semibold my-4">Booked Tables</h3>
+    <ul class="divide-y divide-gray-300">
+      <li v-for="table in bookedTables" :key="table.id" class="flex justify-between py-2">
+        <span class="text-lg">{{ table.name }}</span>
+        <button class="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded" @click="cancelBooking(table.id)">Cancel Booking</button>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script>
+import { useStore } from '@/store';
+
+export default {
+  setup() {
+    const store = useStore();
+
+    return {
+      availableTables: store.availableTables,
+      bookedTables: store.bookedTables,
+      bookTable: store.bookTable,
+      cancelBooking: store.cancelBooking,
+    };
+  },
+};
+</script>
+
+```
+
+#### booking form
+```vue
+<template>
+  <form @submit.prevent="submitForm" class="max-w-sm mx-auto mt-10">
+    <h2 class="text-2xl font-bold mb-4">Book a Table</h2>
+    <div class="mb-4">
+      <label for="name" class="block font-medium text-gray-700 mb-2">Name:</label>
+      <input id="name" v-model="name" type="text" required class="form-input rounded-md shadow-sm w-full"/>
+    </div>
+    <div class="mb-4">
+      <label for="phone" class="block font-medium text-gray-700 mb-2">Phone:</label>
+      <input id="phone" v-model="phone" type="tel" required class="form-input rounded-md shadow-sm w-full"/>
+    </div>
+    <div class="mb-4">
+      <label for="date" class="block font-medium text-gray-700 mb-2">Date:</label>
+      <input id="date" v-model="date" type="date" required class="form-input rounded-md shadow-sm w-full"/>
+    </div>
+    <div class="mb-4">
+      <label for="startTime" class="block font-medium text-gray-700 mb-2">Start Time:</label>
+      <input id="startTime" v-model="startTime" type="time" required class="form-input rounded-md shadow-sm w-full"/>
+    </div>
+    <div class="mb-4">
+      <label for="endTime" class="block font-medium text-gray-700 mb-2">End Time:</label>
+      <input id="endTime" v-model="endTime" type="time" required class="form-input rounded-md shadow-sm w-full"/>
+    </div>
+    <div class="mb-4">
+      <label for="table" class="block font-medium text-gray-700 mb-2">Table:</label>
+      <select id="table" v-model="tableId" required class="form-select rounded-md shadow-sm w-full">
+        <option disabled value="">Select a table</option>
+        <option v-for="table in availableTables" :key="table.id" :value="table.id">{{ table.name }}</option>
+      </select>
+    </div>
+    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Book Table</button>
+  </form>
+</template>
+
+<script>
+import { useStore } from '@/store';
+import { ref, computed } from 'vue';
+
+export default {
+  setup() {
+    const store = useStore();
+
+    const name = ref('');
+    const phone = ref('');
+    const date = ref('');
+    const startTime = ref('');
+    const endTime = ref('');
+    const tableId = ref('');
+
+    const availableTables = computed(() => store.availableTables);
+
+    const submitForm = () => {
+      const booking = {
+        name: name.value,
+        phone: phone.value,
+        date: date.value,
+        startTime: startTime.value,
+        endTime: endTime.value,
+        tableId: tableId.value,
+      };
+      store.bookTable(booking);
+      clearForm();
+    };
+
+    const clearForm = () => {
+      name.value = '';
+      phone.value = '';
+      date.value = '';
+      startTime.value = '';
+      endTime.value = '';
+      tableId.value = '';
+    };
+
+    return {
+      name,
+      phone,
+      date,
+      startTime,
+      endTime,
+      tableId,
+      availableTables,
+      submitForm
+}
+</script>
+```
+#### Booking Details
+```vue
+<template>
+  <div class="max-w-lg mx-auto bg-white rounded-md shadow-md p-6">
+    <h2 class="text-xl font-medium mb-4">Booking Details</h2>
+    <p class="mb-2"><strong>Name:</strong> {{ booking.name }}</p>
+    <p class="mb-2"><strong>Phone:</strong> {{ booking.phone }}</p>
+    <p class="mb-2"><strong>Date:</strong> {{ booking.date }}</p>
+    <p class="mb-2"><strong>Start Time:</strong> {{ booking.startTime }}</p>
+    <p class="mb-2"><strong>End Time:</strong> {{ booking.endTime }}</p>
+    <p class="mb-4"><strong>Table:</strong> {{ tableName }}</p>
+    <button 
+      class="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-md"
+      @click="cancelBooking"
+    >
+      Cancel Booking
+    </button>
+  </div>
+</template>
+
+<script>
+import { useStore } from '@/store';
+
+export default {
+  props: {
+    booking: {
+      type: Object,
+      required: true,
+    },
+  },
+  setup(props) {
+    const store = useStore();
+
+    const tableName = computed(() => {
+      const table = store.getTableById(props.booking.tableId);
+      return table ? table.name : 'Unknown Table';
+    });
+
+    const cancelBooking = () => {
+      store.cancelBooking(props.booking.id);
+    };
+
+    return {
+      tableName,
+      cancelBooking,
+    };
+  },
+};
+</script>
+
+<style scoped>
+  /* Add any custom CSS styles here */
+</style>
+
+```
+
+
 
 
