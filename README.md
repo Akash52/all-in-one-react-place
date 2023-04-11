@@ -840,6 +840,28 @@ export default {
 </style>
 
 ```
+```
+const fieldSets = [
+  { name: "commonData", fieldIds: [1, 2] },
+  { name: "clientData", fieldIds: [3, 4, 5, 6] },
+  { name: "teamData", fieldIds: [7, 8, 9] },
+  { name: "practiceData", fieldIds: [10, 11, 12, 13, 14] },
+  {
+    name: "solutionData",
+    fieldIds: [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26],
+  },
+  { name: "testimonialData", fieldIds: [27, 28, 29] },
+];
+
+const filterByFieldIds = (fieldIds) =>
+  project_values.filter((item) => fieldIds.includes(item.case_study_field_id));
+
+const fieldData = {};
+
+fieldSets.forEach((fieldSet) => {
+  fieldData[fieldSet.name] = filterByFieldIds(fieldSet.fieldIds);
+});
+```
 
 
 
