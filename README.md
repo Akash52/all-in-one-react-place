@@ -914,5 +914,415 @@ Nuxt 3 also supports background sync, which allows your PWA to continue running 
 
 ```
 
+## Basic Rental Application
+
+```js
+
+React Form
+
+import { useState } from "react";
+
+function RentalForm({ onSubmit, onCancel, rental = {} }) {
+  const [newRental, setNewRental] = useState({
+    property_type: "",
+    address: "",
+    city: "",
+    state: "",
+    zip_code: "",
+    rental_price: 0,
+    available_date: "",
+    is_furnished: false,
+    square_feet: 0,
+    bedrooms: 0,
+    bathrooms: 0,
+    pets_allowed: false,
+    contact_name: "",
+    contact_email: "",
+    contact_phone: "",
+    ...rental,
+  });
+
+  const handleInputChange = (event) => {
+    const target = event.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+
+    setNewRental({ ...newRental, [name]: value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSubmit(newRental);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <h2>{rental.id ? "Update" : "Create"} Rental:</h2>
+      <p>
+        Property Type:
+        <input
+          type="text"
+          name="property_type"
+          value={newRental.property_type}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Address:
+        <input
+          type="text"
+          name="address"
+          value={newRental.address}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        City:
+        <input
+          type="text"
+          name="city"
+          value={newRental.city}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        State:
+        <input
+          type="text"
+          name="state"
+          value={newRental.state}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Zip Code:
+        <input
+          type="text"
+          name="zip_code"
+          value={newRental.zip_code}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Rental Price:
+        <input
+          type="number"
+          name="rental_price"
+          value={newRental.rental_price}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Available Date:
+        <input
+          type="date"
+          name="available_date"
+          value={newRental.available_date}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Furnished:
+        <input
+          type="checkbox"
+          name="is_furnished"
+          checked={newRental.is_furnished}
+          onChange={handleInputChange}
+        />
+      </p>
+      <p>
+        Square Feet:
+        <input
+          type="number"
+          name="square_feet"
+          value={newRental.square_feet}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Bedrooms:
+        <input
+          type="number"
+          name="bedrooms"
+          value={newRental.bedrooms}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Bathrooms:
+        <input
+          type="number"
+          name="bathrooms"
+          value={newRental.bathrooms}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Pets Allowed:
+        <input
+          type="checkbox"
+          name="pets_allowed"
+          checked={newRental.pets_allowed}
+          onChange={handleInputChange}
+        />
+      </p>
+      <p>
+        Contact Name:
+        <input
+          type="text"
+          name="contact_name"
+          value={newRental.contact_name}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Contact Email:
+        <input
+          type="email"
+          name="contact_email"
+          value={newRental.contact_email}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Contact Phone:
+        <input
+          type="tel"
+          name="contact_phone"
+          value={newRental.contact_phone}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <button type="submit">{rental.id ? "Update" : "Create"} Rental</button>
+      {onCancel && (
+        <button type="button" onClick={onCancel}>
+          Cancel
+        </button>
+      )}
+    </form>
+  );
+}
+
+export default RentalForm;
+
+
+Rental LIST
+
+import { useState } from "react";
+
+function RentalForm({ onSubmit, onCancel, rental = {} }) {
+  const [newRental, setNewRental] = useState({
+    property_type: "",
+    address: "",
+    city: "",
+    state: "",
+    zip_code: "",
+    rental_price: 0,
+    available_date: "",
+    is_furnished: false,
+    square_feet: 0,
+    bedrooms: 0,
+    bathrooms: 0,
+    pets_allowed: false,
+    contact_name: "",
+    contact_email: "",
+    contact_phone: "",
+    ...rental,
+  });
+
+  const handleInputChange = (event) => {
+    const target = event.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+
+    setNewRental({ ...newRental, [name]: value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSubmit(newRental);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <h2>{rental.id ? "Update" : "Create"} Rental:</h2>
+      <p>
+        Property Type:
+        <input
+          type="text"
+          name="property_type"
+          value={newRental.property_type}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Address:
+        <input
+          type="text"
+          name="address"
+          value={newRental.address}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        City:
+        <input
+          type="text"
+          name="city"
+          value={newRental.city}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        State:
+        <input
+          type="text"
+          name="state"
+          value={newRental.state}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Zip Code:
+        <input
+          type="text"
+          name="zip_code"
+          value={newRental.zip_code}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Rental Price:
+        <input
+          type="number"
+          name="rental_price"
+          value={newRental.rental_price}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Available Date:
+        <input
+          type="date"
+          name="available_date"
+          value={newRental.available_date}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Furnished:
+        <input
+          type="checkbox"
+          name="is_furnished"
+          checked={newRental.is_furnished}
+          onChange={handleInputChange}
+        />
+      </p>
+      <p>
+        Square Feet:
+        <input
+          type="number"
+          name="square_feet"
+          value={newRental.square_feet}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Bedrooms:
+        <input
+          type="number"
+          name="bedrooms"
+          value={newRental.bedrooms}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Bathrooms:
+        <input
+          type="number"
+          name="bathrooms"
+          value={newRental.bathrooms}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Pets Allowed:
+        <input
+          type="checkbox"
+          name="pets_allowed"
+          checked={newRental.pets_allowed}
+          onChange={handleInputChange}
+        />
+      </p>
+      <p>
+        Contact Name:
+        <input
+          type="text"
+          name="contact_name"
+          value={newRental.contact_name}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Contact Email:
+        <input
+          type="email"
+          name="contact_email"
+          value={newRental.contact_email}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <p>
+        Contact Phone:
+        <input
+          type="tel"
+          name="contact_phone"
+          value={newRental.contact_phone}
+          onChange={handleInputChange}
+          required
+        />
+      </p>
+      <button type="submit">{rental.id ? "Update" : "Create"} Rental</button>
+      {onCancel && (
+        <button type="button" onClick={onCancel}>
+          Cancel
+        </button>
+      )}
+    </form>
+  );
+}
+
+export default RentalForm;
+
+```
+
+
+
+
 
 
