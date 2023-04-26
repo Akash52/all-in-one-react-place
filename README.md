@@ -1319,6 +1319,12 @@ function RentalForm({ onSubmit, onCancel, rental = {} }) {
 
 export default RentalForm;
 
+
+What is a Progressive Web App?
+A Progressive Web App is a web application that provides users with an app-like experience through modern web technologies. PWAs are designed to work on any device or platform that supports the web, including desktops, tablets, and smartphones. They can be installed on the user's device like a native app, accessed through the home screen or app drawer, and loaded quickly even when offline.
+
+PWAs are built using a collection of web APIs, including Service Workers, Web App Manifest, and Push Notifications. These APIs allow developers to add features such as caching, offline support, app icons, splash screens, and push notifications to their web applications, giving users an app-like experience without the need to download a separate app from an app store.
+
 ```
 Building a PWA in ReactJS
 ReactJS is a popular frontend library used for building web applications. To add PWA features to our ReactJS app, we'll need to follow these steps:
@@ -1331,6 +1337,29 @@ ReactJS is a popular frontend library used for building web applications. To add
 - Add app icons and splash screens.
 - Enable push notifications.
 - Let's get started!
+
+
+Manifest :
+
+Let's go over each field in detail:
+
+name: The name of the app. This will be displayed on the splash screen and in the app switcher.
+short_name: A shorter version of the app name that may be used when there is limited space available, such as in the home screen icon label.
+icons: An array of images to be used as icons for the app. Different sizes are provided for various devices and contexts.
+start_url: The URL that should be loaded when the app is launched from the home screen or app switcher.
+scope: The scope of the app, which defines the pages that are considered part of the app. This is used by the service worker.
+display: Defines how the app should be displayed. Options include fullscreen, standalone, minimal-ui, and browser.
+orientation: Defines the default orientation of the app. Options include any, natural, landscape, and portrait.
+background_color: The background color of the app.
+theme_color: The color used for the browser toolbar, status bar, task switcher, and other UI elements.
+
+To make sure your PWA is supported on all devices, you should ensure that:
+
+Your icons are available in various sizes to support different devices and contexts.
+You've set a start_url that makes sense for your app and provides a good starting point for users.
+Your scope is set correctly to ensure that all pages that should be part of the app are included.
+Your display mode is set appropriately based on the type of app you're building and the user experience you're aiming for.
+You've specified orientation to ensure that your app works in both portrait and landscape modes.
 
 
 
