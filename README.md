@@ -1320,6 +1320,18 @@ function RentalForm({ onSubmit, onCancel, rental = {} }) {
 export default RentalForm;
 
 ```
+Building a PWA in ReactJS
+ReactJS is a popular frontend library used for building web applications. To add PWA features to our ReactJS app, we'll need to follow these steps:
+
+* Create a new ReactJS app using create-react-app.
+- Add a Service Worker to the app.
+- Add a Web App Manifest to the app.
+- Implement caching for static assets.
+- Implement offline support using the cached assets.
+- Add app icons and splash screens.
+- Enable push notifications.
+- Let's get started!
+
 
 
 
