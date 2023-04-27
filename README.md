@@ -1363,6 +1363,81 @@ You've specified orientation to ensure that your app works in both portrait and 
 
 
 
+```
+const CACHE_NAME = "version-1";
+const urlsToCache = ["index.html", "offline.html"];
+
+const self = this;
+
+//install SW
+
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      console.log("Opened Cache");
+      return cache.addAll(urlsToCache);
+    })
+  );
+});
+
+//Listen for response
+// fetch event
+self.addEventListener("fetch", (evt) => {
+  const { url } = evt.request;
+  if (!(url.startsWith("http") || url.startsWith("https"))) return;
+
+  evt.respondWith(
+    caches.match(evt.request).then(
+      (cacheRes) =>
+        cacheRes ||
+        fetch(evt.request)
+          .then((fetchRes) => {
+            if (!fetchRes || fetchRes.status !== 200) return fetchRes;
+            const cloneRes = fetchRes.clone();
+            caches.open(dynamicNames).then((cache) => {
+              cache.put(evt.request.url, cloneRes);
+              limitCacheSize(dynamicNames, 75);
+            });
+            return fetchRes;
+          })
+          .catch(() => caches.match("/fallback"))
+    )
+  );
+});
+
+// cache size limit function
+const limitCacheSize = (name, size) => {
+  caches.open(name).then((cache) => {
+    cache.keys().then((keys) => {
+      if (keys.length > size) {
+        cache.delete(keys[0]).then(limitCacheSize(name, size));
+      }
+    });
+  });
+};
+
+//Activate teh SW
+self.addEventListener("activate", (event) => {
+  const cachesWhitelist = [];
+  cachesWhitelist.push(CACHE_NAME);
+
+  event.waitUntil(
+    caches.keys().then((cacheNames) =>
+      Promise.all(
+        cacheNames.map((cacheNames) => {
+          if (!cachesWhitelist.includes(cacheNames)) {
+            return caches.delete(cacheNames);
+          }
+        })
+      )
+    )
+  );
+});
+
+```
+
+
+
 
 
 
