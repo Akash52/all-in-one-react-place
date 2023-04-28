@@ -1437,6 +1437,572 @@ self.addEventListener("activate", (event) => {
 ```
 
 
+```vue
+<template>
+  <form
+    @submit.prevent="handleSubmit"
+    class="px-4 py-6 bg-gray-100 rounded-lg shadow-md dark:bg-gray-800"
+  >
+    <h2 class="text-xl font-bold mb-4 text-gray-700 dark:text-white">
+      {{ formTitle }}
+    </h2>
+    <div
+      class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 pt-6 gap-8"
+    >
+      <div class="flex flex-col">
+        <label
+          htmlFor="property_type"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >
+          Property Type<span class="text-red-500">*</span>:
+        </label>
+        <input
+          type="text"
+          id="property_type"
+          v-model="rental.property_type"
+          class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+          required
+        />
+      </div>
+      <div class="flex flex-col">
+        <label
+          htmlFor="address"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >
+          Address<span class="text-red-500">*</span>:
+        </label>
+        <input
+          type="text"
+          id="address"
+          v-model="rental.address"
+          class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+          required
+        />
+      </div>
+      <div class="flex flex-col">
+        <label
+          htmlFor="city"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >
+          City<span class="text-red-500">*</span>:
+        </label>
+        <input
+          type="text"
+          id="city"
+          v-model="rental.city"
+          class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+          required
+        />
+      </div>
+      <div class="flex flex-col">
+        <label
+          htmlFor="state"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >
+          State<span class="text-red-500">*</span>:
+        </label>
+        <input
+          type="text"
+          id="state"
+          v-model="rental.state"
+          class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+          required
+        />
+      </div>
+      <div class="flex flex-col">
+        <label
+          htmlFor="zip_code"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >
+          Zip Code<span class="text-red-500">*</span>:
+        </label>
+        <input
+          type="text"
+          id="zip_code"
+          v-model="rental.zip_code"
+          class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+          required
+        />
+      </div>
+      <div class="flex flex-col">
+        <label
+          htmlFor="rental_price"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >
+          Rental Price<span class="text-red-500">*</span>:
+        </label>
+        <input
+          type="number"
+          id="rental_price"
+          v-model="rental.rental_price"
+          class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+          required
+        />
+      </div>
+      <div class="flex flex-col">
+        <label
+          htmlFor="available_date"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >
+          Available Date<span class="text-red-500"></span>:
+        </label>
+        <input
+          type="date"
+          id="available_date"
+          v-model="rental.available_date"
+          class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+          required
+        />
+      </div>
+      <div class="flex flex-col">
+        <label
+          htmlFor="square_feet"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >
+          Image URL<span class="text-red-500"></span>:
+        </label>
+        <input
+          type="url"
+          id="image"
+          v-model="rental.image"
+          class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+          required
+        />
+      </div>
+      <div class="flex flex-col">
+        <label
+          htmlFor="square_feet"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >
+          Square Feet<span class="text-red-500"></span>:
+        </label>
+        <input
+          type="number"
+          id="square_feet"
+          v-model="rental.square_feet"
+          class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+          required
+        />
+      </div>
+      <div class="flex flex-col">
+        <label
+          htmlFor="bedrooms"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >
+          Bedrooms<span class="text-red-500"></span>:
+        </label>
+        <input
+          type="number"
+          id="bedrooms"
+          v-model="rental.bedrooms"
+          class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+          required
+        />
+      </div>
+      <div class="flex flex-col">
+        <label
+          htmlFor="bathrooms"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >
+          Bathrooms<span class="text-red-500"></span>:
+        </label>
+        <input
+          type="number"
+          id="bathrooms"
+          v-model="rental.bathrooms"
+          class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+          required
+        />
+      </div>
+      <div class="flex flex-col">
+        <label
+          htmlFor="contact_name"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >
+          Contact Name<span class="text-red-500"></span>:
+        </label>
+        <input
+          type="text"
+          id="contact_name"
+          v-model="rental.contact_name"
+          class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+          required
+        />
+      </div>
+      <div class="flex flex-col">
+        <label
+          htmlFor="contact_email"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >
+          Contact Email<span class="text-red-500"></span>:
+        </label>
+        <input
+          type="email"
+          id="contact_email"
+          v-model="rental.contact_email"
+          class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+          required
+        />
+      </div>
+      <div class="flex flex-col">
+        <label
+          htmlFor="contact_phone"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >
+          Contact Phone<span class="text-red-500"></span>:
+        </label>
+        <input
+          type="tel"
+          id="contact_phone"
+          v-model="rental.contact_phone"
+          class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+          required
+        />
+      </div>
+      <div class="flex">
+        <div>
+          <label
+            htmlFor="is_furnished"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+          >
+            Furnished:
+            <input
+              type="checkbox"
+              id="is_furnished"
+              v-model="rental.is_furnished"
+              :checked="rental.is_furnished"
+              class="rounded-sm border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 ml-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+            />
+          </label>
+        </div>
+        <div class="ml-4">
+          <label
+            htmlFor="pets_allowed"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+          >
+            Pets Allowed:
+            <input
+              type="checkbox"
+              id="pets_allowed"
+              v-model="rental.pets_allowed"
+              :checked="rental.pets_allowed"
+              class="rounded-sm border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 ml-2 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+            />
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-end mt-6">
+      <button
+        type="button"
+        class="inline-flex justify-center rounded-md border border-gray-300 py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:hover:bg-gray-600 dark:focus:ring-indigo-400 dark:focus:ring-offset-gray-800 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+        @click="cancel"
+      >
+        Cancel
+      </button>
+      <button
+        type="submit"
+        class="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:hover:bg-indigo-600 dark:focus:ring-indigo-400 dark:focus:ring-offset-gray-800 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+      >
+        {{ submitButtonTitle }}
+      </button>
+    </div>
+  </form>
+</template>
+
+<script>
+export default {
+  props: {
+    rental: {
+      type: Object,
+      required: true,
+    },
+    formTitle: {
+      type: String,
+      required: true,
+    },
+    submitButtonTitle: {
+      type: String,
+      required: true,
+    },
+  },
+  methods: {
+    handleSubmit() {
+      this.$emit("submit", this.rental);
+    },
+    cancel() {
+      this.$emit("cancel");
+    },
+  },
+};
+</script>
+
+<style scoped>
+/* add your styles here */
+</style>
+
+```
+```vue
+<template>
+  <div class="bg-gray-100 dark:bg-gray-900 min-h-screen">
+    <div class="px-4 py-6 bg-white dark:bg-gray-800 shadow-md sm:px-6 lg:px-8">
+      <div class="container mx-auto flex justify-between flex-wrap mb-4">
+        <h1 class="text-2xl font-bold dark:text-gray-300 ml-2">
+          Rentals Application
+        </h1>
+        <button
+          @click="selectedRental = {}"
+          class="bg-green-500 hover:bg-green-600 text-white inline-flex justify-center rounded-md border border-transparent py-2 px-4 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+        >
+          Create Rental
+        </button>
+      </div>
+
+      <div className="relative z-30" v-if="selectedRental !== null">
+        <div
+          className="py-4 px-6 container mx-auto absolute inset-0 z-20 bg-opacity-75"
+        >
+          <RentalForm
+            :rental="selectedRental"
+            :formTitle="selectedRental.id ? 'Edit Rental' : 'Create Rental'"
+            :submitButtonTitle="selectedRental.id ? 'Update' : 'Create'"
+            @submit="handleCreateOrUpdateRental"
+            @cancel="selectedRental = null"
+          />
+        </div>
+        <div
+          className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+          @click="selectedRental = null"
+        />
+      </div>
+
+      <div v-if="isLoading">
+        <div
+          role="status"
+          class="flex justify-center items-center min-h-screen"
+        >
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+
+      <div v-else>
+        <div
+          className="p-4 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 container mx-auto
+      dark:bg-gray-800 dark:text-gray-200
+      "
+        >
+          <div
+            v-for="rental in rentals"
+            :key="rental.id"
+            class="border rounded-lg overflow-hidden shadow-md"
+          >
+            <img
+              :src="rental.image"
+              alt="Rental Property"
+              class="w-full h-40 object-cover"
+            />
+            <div class="p-4">
+              <h3 class="text-lg font-medium">{{ rental.property_type }}</h3>
+              <p
+                class="text-gray-600 mb-2 font-normal text-base dark:text-gray-400"
+              >
+                {{ rental.address }}, {{ rental.city }}, {{ rental.state }}
+                {{ rental.zip_code }}
+              </p>
+              <p
+                class="text-green-500 font-bold text-lg mb-2 dark:text-green-400"
+              >
+                ${{ rental.rental_price }}/month
+              </p>
+              <p
+                class="text-gray-600 font-medium text-base pb-1 dark:text-gray-400"
+              >
+                Available Date:
+                <span class="text-gray-500 font-normal ml-1 dark:text-gray-300">
+                  {{ rental.available_date }}
+                </span>
+              </p>
+              <p class="text-base font-medium pb-1 dark:text-gray-400">
+                <span
+                  :style="{
+                    textDecoration: rental.is_furnished
+                      ? 'none'
+                      : 'line-through',
+                  }"
+                >
+                  {{ rental.is_furnished ? "Furnished" : "Not Furnished" }}
+                </span>
+              </p>
+              <p
+                class="pb-1 text-base text-gray-600 font-medium dark:text-gray-400"
+              >
+                Square Feet:
+                <span class="text-gray-500 font-normal ml-1 dark:text-gray-300">
+                  {{ rental.square_feet }}
+                </span>
+              </p>
+              <p
+                class="pb-1 text-base text-gray-600 font-medium dark:text-gray-400"
+              >
+                Bedrooms:
+                <span class="text-gray-500 font-normal ml-1 dark:text-gray-300">
+                  {{ rental.bedrooms }}
+                </span>
+              </p>
+              <p
+                class="pb-1 text-base text-gray-600 font-medium dark:text-gray-400"
+              >
+                Bathrooms:
+                <span class="text-gray-500 font-normal ml-1 dark:text-gray-300">
+                  {{ rental.bathrooms }}
+                </span>
+              </p>
+              <p
+                class="pb-1 text-base dark:text-gray-400"
+                :style="{
+                  textDecoration: rental.pets_allowed ? 'none' : 'line-through',
+                }"
+              >
+                {{ rental.pets_allowed ? "Pets Allowed" : "No Pets Allowed" }}
+              </p>
+
+              <div class="flex justify-between items-center mt-4">
+                <button @click="selectedRental = rental">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6 text-blue-600 dark:text-blue-400"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                    />
+                  </svg>
+                </button>
+                <button @click="handleDeleteRental(rental.id)">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="h-6 w-6 text-red-500 hover:text-red-600"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+import { ref, reactive, onMounted, watch, computed } from "vue";
+import RentalForm from "./RentalForm.vue";
+import {
+  getRentals,
+  createRental,
+  updateRental,
+  deleteRental,
+} from "../services/ApiService.js";
+import Search from "./Search.vue";
+
+export default {
+  components: {
+    RentalForm,
+    Search,
+  },
+
+  setup() {
+    const rentals = ref([]);
+    const selectedRental = ref(null);
+    const isLoading = ref(true);
+
+    const fetchRentals = async () => {
+      try {
+        const data = await getRentals();
+        rentals.value = data;
+        isLoading.value = false;
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    onMounted(() => {
+      fetchRentals();
+    });
+
+    const handleCreateOrUpdateRental = async (rental) => {
+      console.log("handleCreateOrUpdateRental", rental);
+      if (rental.id) {
+        await handleUpdateRental(rental);
+      } else {
+        await handleCreateRental(rental);
+      }
+    };
+
+    const handleCreateRental = async (rental) => {
+      console.log("create rental", rental);
+      try {
+        const newRental = await createRental(rental);
+
+        if (newRental) {
+          rentals.value.push(newRental);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    const handleUpdateRental = async (rental) => {
+      console.log("update rental", rental.id);
+      try {
+        await updateRental(rental);
+        const index = rentals.value.findIndex((r) => r.id === rental.id);
+        if (index !== -1) {
+          rentals.value.splice(index, 1, rental);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    const handleDeleteRental = async (id) => {
+      try {
+        await deleteRental(id);
+        const index = rentals.value.findIndex((r) => r.id === id);
+        if (index !== -1) {
+          rentals.value.splice(index, 1);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    return {
+      rentals,
+      selectedRental,
+      isLoading,
+      handleCreateOrUpdateRental,
+      handleDeleteRental,
+    };
+  },
+};
+</script>
+
+```
+
 
 
 
